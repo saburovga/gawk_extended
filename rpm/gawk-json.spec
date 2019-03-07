@@ -53,8 +53,10 @@ make check
 #%license COPYING
 #%doc NEWS
 #%doc test/*.awk
-%{_libdir}/gawk/json.so
+#%{_libdir}/gawk/json.so
 %{_mandir}/man3/*
+
+find / -name json.so
 
 # =============================================================================
 
