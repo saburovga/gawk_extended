@@ -13,6 +13,14 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
+
+# Note: we no longer include the spec file in the distribution tarball.
+# With the specfile in the tarball, rpmbuild can work
+#  directly on the tarball (e.g. rpmbuild -tb <tarball>).
+# The problem is that every time the spec file changes, one must bump the
+# version of the whole package, and this is problematic. It doesn't make sense
+# to have to change the entire package version just because the spec file
+# needed a patch.
 VPATH = @srcdir@
 am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
 am__make_running_with_option = \
@@ -76,9 +84,9 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-DIST_COMMON = $(srcdir)/test.makefile $(srcdir)/Makefile.in \
-	$(srcdir)/Makefile.am
-subdir = test
+subdir = packaging
+DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
+	$(srcdir)/gawk-json.spec.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gawkext.m4 \
 	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/iconv.m4 \
@@ -93,7 +101,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = gawk-json.spec
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -124,7 +132,7 @@ AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
-AWK = LC_ALL=$${GAWKLOCALE:-C} LANG=$${GAWKLOCALE:-C} AWKLIBPATH=../.libs:`$(GAWKPROG) 'BEGIN {print ENVIRON["AWKLIBPATH"]}'` PATH=$(GEBINPFX)$$PATH LD_LIBRARY_PATH=$(GELIBPFX)$$LD_LIBRARY_PATH DYLD_LIBRARY_PATH=$(GELIBPFX)$$DYLD_LIBRARY_PATH $(VALGRIND) $(GAWKPROG)
+AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -255,37 +263,10 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = \
-	json.awk \
-	json.ok
-
-
-# Get rid of core files when cleaning and generated .ok file
-CLEANFILES = _* *_.png core core.* junk out1 out2 out3 test1 test2 seq *~
-CMP = cmp
-
-# Default for VALGRIND is empty unless overridden by a command-line argument.
-# This protects against cruft in the environment.
-VALGRIND = 
-@GELIBDIR_FALSE@GELIBPFX = 
-
-# This business forces the locale to be C for running the tests,
-# unless we override it to something else for testing.
-#
-# This can also be done in individual tests where we wish to
-# check things specifically not in the C locale.
-
-# For Cygwin to find libgawkextlib, we need to set the PATH.
-# Similarly, Mac OS requires us to set DYLD_LIBRARY_PATH.  Just to
-# be safe, we will set LD_LIBRARY_PATH also.  I hope that covers all
-# platforms.
-@GELIBDIR_TRUE@GELIBPFX = $(GAWKEXTLIBDIR)$(PATH_SEPARATOR)
-@GELIBDIR_FALSE@GEBINPFX = 
-@GELIBDIR_TRUE@GEBINPFX = $(GAWKEXTBINDIR)$(PATH_SEPARATOR)
 all: all-am
 
 .SUFFIXES:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/test.makefile $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -294,9 +275,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/test.makefile $(am__conf
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu test/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu packaging/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu test/Makefile
+	  $(AUTOMAKE) --gnu packaging/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -306,7 +287,6 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe);; \
 	esac;
-$(srcdir)/test.makefile:
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
@@ -316,6 +296,8 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
+gawk-json.spec: $(top_builddir)/config.status $(srcdir)/gawk-json.spec.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -385,7 +367,6 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
-	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -475,61 +456,7 @@ uninstall-am:
 	tags-am uninstall uninstall-am
 
 
-# An attempt to print something that can be grepped for in build logs
-pass-fail:
-	@COUNT=`ls _* 2>/dev/null | wc -l` ; \
-	if test $$COUNT = 0 ; \
-	then	echo ALL TESTS PASSED ; \
-	else	echo $$COUNT TESTS FAILED ; exit 1; \
-	fi
-
-# This target for my convenience to look at all the results
-diffout:
-	for i in _* ; \
-	do  \
-		if [ "$$i" != "_*" ]; then \
-		echo ============== $$i ============= ; \
-		if [ -r $${i#_}.ok ]; then \
-		diff -c $${i#_}.ok $$i ; \
-		else \
-		diff -c $(srcdir)/$${i#_}.ok  $$i ; \
-		fi ; \
-		fi ; \
-	done | more
-
-# convenient way to scan valgrind results for errors
-valgrind-scan:
-	@echo "Scanning valgrind log files for problems:"
-	@$(AWK) '\
-	function show() {if (cmd) {printf "%s: %s\n",FILENAME,cmd; cmd = ""}; \
-	  printf "\t%s\n",$$0}; \
-	{$$1 = ""}; \
-	$$2 == "Command:" {incmd = 1; $$2 = ""; cmd = $$0; next}; \
-	incmd {if (/Parent PID:/) incmd = 0; else {cmd = (cmd $$0); next}}; \
-	/ERROR SUMMARY:/ && !/: 0 errors from 0 contexts/ {show()}; \
-	/definitely lost:/ && !/: 0 bytes in 0 blocks/ {show()}; \
-	/possibly lost:/ && !/: 0 bytes in 0 blocks/ {show()}; \
-	/ suppressed:/ && !/: 0 bytes in 0 blocks/ {show()}; \
-	' log.[0-9]*
-
-# Message stuff is to make it a little easier to follow.
-# Make the pass-fail last and dependent on others to avoid
-# spurious errors if `make -j' in effect.
-check:	test-msg-start mytests test-msg-end
-	@$(MAKE) pass-fail || { $(MAKE) diffout; exit 1; }
-
-mytests: json
-
-test-msg-start:
-	@echo "======== Starting json tests ========"
-
-test-msg-end:
-	@echo "======== Done with json tests ========"
-
-json::
-	@echo $@
-	@$(AWK) -l json -f $(srcdir)/$@.awk >_$@ 2>&1 || echo EXIT CODE: $$? >>_$@
-	@-$(CMP) $(srcdir)/$@.ok _$@ && rm -f _$@
+#EXTRA_DIST = $(PACKAGE).spec.in $(PACKAGE).spec
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
