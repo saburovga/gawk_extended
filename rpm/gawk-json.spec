@@ -34,7 +34,7 @@ implement functions mapping between gawk associative arrays and JSON.
 %autosetup
 
 %build
-rpm -ivh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-0.0.1-1.el7.centos.x86_64.rpm
+rpm -ivh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-2.4.1.3-1.el7.centos.x86_64.rpm
 chmod +x configure
 %configure
 %make_build
