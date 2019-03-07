@@ -55,7 +55,7 @@ make check
 #%doc test/*.awk
 #%{_libdir}/gawk/json.so
 #%{_mandir}/man3/*
-/usr/lib64/gawk/json.so
+/build/BUILDROOT/gawk-json-4.2.1.23-1.el7.centos.x86_64/usr/lib64/gawk/json.so
 /usr/share/man/man3/json.3am.gz
 
 
