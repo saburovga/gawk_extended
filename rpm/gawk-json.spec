@@ -5,7 +5,7 @@ Release: 1%{?dist}
 License: GPLv3+
 URL: https://sourceforge.net/projects/gawkextlib
 Source0: %{url}/files/%{name}-%{version}.tar.gz
-Requires: gawk
+#Requires: gawk
 # This version constraint is temporary. When gawk 4.2.1 is released, we should
 # stop requiring this specific version of gawk-devel, and we should remove
 # the private copy of gawkapi.h in the distribution.
