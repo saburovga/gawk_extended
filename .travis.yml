@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+language: C
+env:
+  matrix:
+  - OS=el DIST=6
+  - OS=el DIST=7
+script:
+  - git submodule update --init --recursive
+  # - git describe --long
+  - git clone https://github.com/packpack/packpack.git packpack
+  - packpack/packpack
+deploy:
+  provider: bintray
+  user: tgadiev
+  file: bintray.json
+  skip_cleanup: true
+  key:
+    secure: IyMiNTuYikoGhgpVf/CKgsgp3cgjXbudhnYnQyyOeJA4PQpcZMa8nOS6wio0lyoV+rzcC/HSERnPSWrrTQUrpji0TqWN4vJlWkCuhhddA+1xH54tBqIHIGI/BC+XRNeKVz+cFUZrdsuQd8OQ9hfDg54Tsh0FSKRn6d9R/XxbbXWDkqVpmjRzrqrfhq/ZpOtbZ4MQkc7WqgoWainSGnNx1OLgxrIEU3QcQ3vGVyTQ4Ru4iN6orXidFckY2wL4uVpT+qfAZUHZ8iV8s6X6t52HZ6kqRKiv9/uhz1Ux6mIxIbRHuIEZJECGKe4Y8103TAHJve57XzzLsCGfOI5X5TvcqNMjxEm6wlRCoo7HighOXzJ2KeLg/QctMPb4tWZQ7c6jz+4DH3vKeUmiyjx740Gtvy1L3WvfU6cRYe4BGLlegmkHamGu4bIKPWwFKy14eLvGR2aPbgZDRfV5w4vP7b5IO8xpY7Roed+w+4Z6yZy9hHESoESzf0vd5zc5G88pxIMF4rEsU5U7wX9N1KfNuFkAT5GYMoeINdLlW+3WXhwj9DjOYl2X+Nz92g9POpqy2H8niuxoqQE80JgFOZfANCWF6/8yzbADNN2GAqp0hv0OofjmaN/xjxmcaj2QfFg/GzbSHETx62/TlB9zwmVedskLPO4W8vcmJ6MFYRwMbImX2vo=
+  on:
+    all_branches: true
