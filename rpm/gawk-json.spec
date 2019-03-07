@@ -49,7 +49,7 @@ make check
 # Install NLS language files:
 #%find_lang %{name}
 
-%files -f %{name}.lang
+#%files -f %{name}.lang
 %license COPYING
 %doc NEWS
 %doc test/*.awk
