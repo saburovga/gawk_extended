@@ -47,7 +47,7 @@ make check
 %make_install
 
 # Install NLS language files:
-%find_lang %{name}
+#%find_lang %{name}
 
 %files -f %{name}.lang
 %license COPYING
