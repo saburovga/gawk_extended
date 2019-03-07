@@ -51,7 +51,7 @@ make check
 
 #%files -f %{name}.lang
 #%license COPYING
-%doc NEWS
+#%doc NEWS
 %doc test/*.awk
 %{_libdir}/gawk/json.so
 %{_mandir}/man3/*
