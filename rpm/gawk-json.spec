@@ -37,7 +37,6 @@ implement functions mapping between gawk associative arrays and JSON.
 rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el7.centos.x86_64.rpm
 chmod +x configure
 chmod +x build-aux/install-sh
-
 %configure
 %make_build
 
@@ -49,13 +48,14 @@ make check
 
 # Install NLS language files:
 #%find_lang %{name}
-#%files -f %{name}.lang
-#%license COPYING
-#%doc NEWS
-#%doc test/*.awk
-#%{_libdir}/gawk/json.so
-#%{_mandir}/man3/*
-/usr/share/man/man3/json.3am.gz
+
+%files -f %{name}.lang
+%license COPYING
+%doc NEWS
+%doc test/*.awk
+%{_libdir}/gawk/json.so
+%{_mandir}/man3/*
+/usr/lib64/gawk/json.so
 
 
 # =============================================================================
