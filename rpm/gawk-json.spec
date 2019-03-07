@@ -50,7 +50,7 @@ make check
 #%find_lang %{name}
 
 #%files -f %{name}.lang
-%license COPYING
+#%license COPYING
 %doc NEWS
 %doc test/*.awk
 %{_libdir}/gawk/json.so
