@@ -11,6 +11,7 @@ Source0: %{url}/files/%{name}-%{version}.tar.gz
 # the private copy of gawkapi.h in the distribution.
 #BuildRequires: gawk-devel = 4.2.0
 #BuildRequires: rapidjson-devel
+BuildRequires: glibc
 
 # Make sure the API version is compatible with our source code:
 #BuildRequires: gawk(abi) >= 2.0
@@ -34,7 +35,6 @@ implement functions mapping between gawk associative arrays and JSON.
 %autosetup
 
 %build
-yum install glibc
 rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el7.centos.x86_64.rpm
 wget https://github.com/Tencent/rapidjson/archive/master.zip
 unzip master.zip
