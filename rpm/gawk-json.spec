@@ -5,7 +5,7 @@ Release: 1%{?dist}
 License: GPLv3+
 URL: https://sourceforge.net/projects/gawkextlib
 Source0: %{url}/files/%{name}-%{version}.tar.gz
-#Requires: gawk
+Requires: gawk
 # This version constraint is temporary. When gawk 4.2.1 is released, we should
 # stop requiring this specific version of gawk-devel, and we should remove
 # the private copy of gawkapi.h in the distribution.
@@ -31,10 +31,10 @@ implement functions mapping between gawk associative arrays and JSON.
 # =============================================================================
 
 %prep
-rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el6.x86_64.rpm
 %autosetup
 
 %build
+rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el6.x86_64.rpm
 wget https://github.com/Tencent/rapidjson/archive/master.zip
 unzip master.zip
 cd /build/usr/src/debug/gawk-json-4.2.1.33 && make install
