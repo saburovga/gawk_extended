@@ -38,6 +38,11 @@ rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path
 wget https://github.com/Tencent/rapidjson/archive/master.zip
 unzip master.zip
 cd /build/usr/src/debug/gawk-json-4.2.1.33 && make install
+wget http://ftp.gnu.org/gnu/glibc/glibc-2.15.tar.gz
+tar zxvf glibc-2.15.tar.gz
+cd glibc-2.14 && mkdir build
+cd build && ../configure --prefix=/opt/glibc-2.15 && make -j4 && make install
+export LD_LIBRARY_PATH="/opt/glibc-2.15/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 chmod +x configure
 chmod +x build-aux/install-sh
 %configure
