@@ -10,7 +10,7 @@ Source0: %{url}/files/%{name}-%{version}.tar.gz
 # stop requiring this specific version of gawk-devel, and we should remove
 # the private copy of gawkapi.h in the distribution.
 #BuildRequires: gawk-devel = 4.2.0
-BuildRequires: rapidjson-devel
+#BuildRequires: rapidjson-devel
 
 # Make sure the API version is compatible with our source code:
 #BuildRequires: gawk(abi) >= 2.0
@@ -35,6 +35,9 @@ implement functions mapping between gawk associative arrays and JSON.
 
 %build
 rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el7.centos.x86_64.rpm
+wget https://github.com/Tencent/rapidjson/archive/master.zip
+unzip master.zip
+make install
 chmod +x configure
 chmod +x build-aux/install-sh
 %configure
@@ -55,7 +58,6 @@ make check
 %doc test/*.awk
 %{_libdir}/gawk/json.so
 %{_mandir}/man3/*
-/usr/lib64/gawk/json.so
 
 
 # =============================================================================
