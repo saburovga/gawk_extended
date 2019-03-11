@@ -1,7 +1,7 @@
 {
   "package": {
       "name": "gawk-json",
-      "repo": "gawk_extended",
+      "repo": "gawk_extended_json",
       "subject": "lean-delivery",
       "desc": "rpm package gawk",
       "website_url": "https://github.com/lean-delivery/gawk_extended",
