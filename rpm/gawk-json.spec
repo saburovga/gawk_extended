@@ -34,7 +34,7 @@ implement functions mapping between gawk associative arrays and JSON.
 %autosetup
 
 %build
-rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el7.centos.x86_64.rpm
+rpm -Uvh https://bintray.com/lean-delivery/gawk_extended/download_file?file_path=gawk_extended%2Fgawk-4.2.1.3-1.el6.centos.x86_64.rpm
 wget https://github.com/Tencent/rapidjson/archive/master.zip
 unzip master.zip
 cd /build/usr/src/debug/gawk-json-4.2.1.33 && make install
