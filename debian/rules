@@ -14,8 +14,8 @@ LOCALIAS=/usr/share/locale/locale.alias
 %:
 	dh $@ --with autotools-dev
 
-override_dh_auto_configure:
-	dh_auto_configure -- --disable-rpath
+#override_dh_auto_configure:
+	#dh_auto_configure -- --disable-rpath
 	#touch --date="Jan 01 2000" \
     #        doc/gawktexi.in doc/gawk.texi doc/gawkinet.texi \
     #       doc/gawk.info doc/gawkinet.info doc/sidebar.awk
