@@ -10,7 +10,7 @@ Build-Depends: autotools-dev,
                libsigsegv-dev,
                locales (>= 0)
 Maintainer: Lean Delivery
-Standards-Version: 4.0.2
+Standards-Version: 4.2.1
 Homepage: http://www.gnu.org/software/gawk/
 
 Package: gawk
