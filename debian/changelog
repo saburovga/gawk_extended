@@ -1,3 +1,5 @@
-gawk (4.2.1-1) stable;
+gawk (4.2.1-1) unstable; urgency=low
 
- -- Lean Delivery Team
+  * init package
+
+ -- Lean Delivery <lean-delivery@epam.com>  Wed, 13 Mar 2019 14:57:43 +0300
