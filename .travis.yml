@@ -10,7 +10,7 @@ script:
 - git submodule update --init --recursive
 - ls -a
 - git clone -b gawk-4.2.1 https://git.savannah.gnu.org/git/gawk.git
-- mv $pwd/gawk/* $pwd/
+- cp -r $pwd/gawk/* $pwd
 - ls -a
 - git clone https://github.com/packpack/packpack.git packpack
 - ls -a
