@@ -7,9 +7,7 @@ env:
   - OS=ubuntu DIST=xenial
   - OS=debian DIST=stretch
 script:
-- dist="${DIST}"
 - git submodule update --init --recursive
-- git describe --long
 - git clone https://github.com/packpack/packpack.git packpack
 - sudo packpack/packpack
 deploy:
