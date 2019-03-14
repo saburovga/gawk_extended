@@ -8,21 +8,18 @@ env:
   - OS=el DIST=7
 script:
 - git submodule update --init --recursive
-- ls -a
 - git clone -b gawk-4.2.1 https://git.savannah.gnu.org/git/gawk.git
 - cp -r gawk/* .
-- ls -a
 - git clone https://github.com/packpack/packpack.git packpack
-- ls -a
-# - packpack/packpack
-# deploy:
-#   provider: bintray
-#   user: tgadiev
-#   file: bintray.json
-#   skip_cleanup: true
-#   key:
-#     secure: GBMAE4oADlOMWYefviv+QsTz+50lGVIcliuNDIEW3PA6dubcvCI5OwFSXFuLdp75Gk9uWTrUuPOYLZWPCPmmX8Avk/4oJ7x8dG+EcNAoF8wbvTXg98cZ9UbGlpbWlNEqCEiFCdMWLxwPcx83mNH9lB/pUgPhC9d5FhS8aoU+ftHo5pSFzUbVPX+qnrXw2Mg1/uHnYRyaU4F+Xwu59PEno01pN/LtSenvWQVuecRmx4JOMHjvPCAvl0PbxgIKppuFRgWuknZe0gtZCOIVRhIUNz3xqplewNwnEFx6NtE8Dzrp165qYnqrJzJqdcKrMMHPft9pG87BZL8ks7Me0m6o7i2XK89qps6dXPe9oOefbZdUc+3pKkCP9bkMzJ1mB/pKbcMEiAAVqgAzLw8Dm5WTW429DEeCPccLFZAcWFCSsPal/fWn0JaY/jj2D3dojChE0yZG5Pz/OBBaHofSwZifuz/q4UjLzn2y6sYYMSANGIsCsSmZSREhNSD8TeHaG4JRfNCZNiMmvXAnitkNEHQFMmHlUGW8wRo9oZrl8Sq2LQgYxrXhwI9YaaEvMyOY1i5nL/vLau8TBwRLIkG6inZNJLRI/Pkx52aTUE6WIItmzEAtH3FktwZbzrBYMXma41wJxSUZaELJPlJ7jumE3lq201IOQw7FIGYoMgf6JcJcLDc=
-#     # encrypted key only for travis connection.
-#     # See https://docs.travis-ci.com/user/deployment/bintray/ for related details
-#   on:
-#     all_branches: true
+- packpack/packpack
+deploy:
+  provider: bintray
+  user: tgadiev
+  file: bintray.json
+  skip_cleanup: true
+  key:
+    secure: GBMAE4oADlOMWYefviv+QsTz+50lGVIcliuNDIEW3PA6dubcvCI5OwFSXFuLdp75Gk9uWTrUuPOYLZWPCPmmX8Avk/4oJ7x8dG+EcNAoF8wbvTXg98cZ9UbGlpbWlNEqCEiFCdMWLxwPcx83mNH9lB/pUgPhC9d5FhS8aoU+ftHo5pSFzUbVPX+qnrXw2Mg1/uHnYRyaU4F+Xwu59PEno01pN/LtSenvWQVuecRmx4JOMHjvPCAvl0PbxgIKppuFRgWuknZe0gtZCOIVRhIUNz3xqplewNwnEFx6NtE8Dzrp165qYnqrJzJqdcKrMMHPft9pG87BZL8ks7Me0m6o7i2XK89qps6dXPe9oOefbZdUc+3pKkCP9bkMzJ1mB/pKbcMEiAAVqgAzLw8Dm5WTW429DEeCPccLFZAcWFCSsPal/fWn0JaY/jj2D3dojChE0yZG5Pz/OBBaHofSwZifuz/q4UjLzn2y6sYYMSANGIsCsSmZSREhNSD8TeHaG4JRfNCZNiMmvXAnitkNEHQFMmHlUGW8wRo9oZrl8Sq2LQgYxrXhwI9YaaEvMyOY1i5nL/vLau8TBwRLIkG6inZNJLRI/Pkx52aTUE6WIItmzEAtH3FktwZbzrBYMXma41wJxSUZaELJPlJ7jumE3lq201IOQw7FIGYoMgf6JcJcLDc=
+    # encrypted key only for travis connection.
+    # See https://docs.travis-ci.com/user/deployment/bintray/ for related details
+  on:
+    all_branches: true
