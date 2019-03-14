@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+ifeq (sh4,$(shell dpkg-architecture -qDEB_HOST_ARCH))
+  # Renesas SH(sh4) need -mieee option.
+  # Without this option the fmtspcl test fails.
+  export DEB_CFLAGS_MAINT_APPEND = -mieee
+endif
+
+LOCPATH=$(CURDIR)/debian/build/locales
+LOCALIAS=/usr/share/locale/locale.alias
+
+%:
+	dh $@ --with autotools-dev
+
+override_dh_auto_install:
+	dh_auto_install
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf debian/build
+
+override_dh_compress:
+	# Don't compress awk examples.
+	dh_compress --exclude=.awk

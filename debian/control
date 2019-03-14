@@ -1,0 +1,23 @@
+Source: gawk-json
+Section: interpreters
+Priority: optional
+Build-Depends: autotools-dev,
+               bison,
+               debhelper (>= 9),
+               gettext,
+               libmpfr-dev,
+               libreadline-dev,
+               libsigsegv-dev,
+               locales (>= 0),
+               rapidjson
+Maintainer: Lean Delivery
+Standards-Version: 1.0.2
+Homepage: http://www.gnu.org/software/gawk/
+
+Package: gawk-json
+Architecture: any
+Multi-Arch: foreign
+Provides: awk
+Pre-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}
+Suggests: gawk-doc
