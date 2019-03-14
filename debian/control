@@ -9,7 +9,7 @@ Build-Depends: autotools-dev,
                libreadline-dev,
                libsigsegv-dev,
                locales (>= 0),
-               rapidjson
+               rapidjson-dev
 Maintainer: Lean Delivery
 Standards-Version: 1.0.2
 Homepage: http://www.gnu.org/software/gawk/
