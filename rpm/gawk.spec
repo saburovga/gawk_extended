@@ -29,6 +29,8 @@ considered to be a standard Linux tool for processing text.
 #%patch1 -p1
 
 %build
+cd /build/usr/src/debug/gawk-4.2.1.14/ && ls -a
+
 chmod +x configure
 chmod +x install-sh
 chmod +x extension/build-aux/install-sh
