@@ -29,6 +29,8 @@ considered to be a standard Linux tool for processing text.
 #%patch1 -p1
 
 %build
+ls -a
+
 chmod +x configure
 chmod +x install-sh
 chmod +x extension/build-aux/install-sh
