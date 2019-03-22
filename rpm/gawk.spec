@@ -67,7 +67,7 @@ if [ $1 = 0 -a -f %{_infodir}/gawk.info.gz ]; then
 fi
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
+# %defattr(-,root,root,-)
 %doc README COPYING
 %doc README_d/README.multibyte README_d/README.tests POSIX.STD
 %{_bindir}/*awk
@@ -93,17 +93,17 @@ fi
 /usr/lib64/gawk/rwarray.so
 /usr/lib64/gawk/time.so
 /usr/share/info/gawkworkflow.info.gz
-/usr/share/man/man3/filefuncs.3am.gz
-/usr/share/man/man3/fnmatch.3am.gz
-/usr/share/man/man3/fork.3am.gz
-/usr/share/man/man3/inplace.3am.gz
-/usr/share/man/man3/ordchr.3am.gz
-/usr/share/man/man3/readdir.3am.gz
-/usr/share/man/man3/readfile.3am.gz
-/usr/share/man/man3/revoutput.3am.gz
-/usr/share/man/man3/revtwoway.3am.gz
-/usr/share/man/man3/rwarray.3am.gz
-/usr/share/man/man3/time.3am.gz
+# /usr/share/man/man3/filefuncs.3am.gz
+# /usr/share/man/man3/fnmatch.3am.gz
+# /usr/share/man/man3/fork.3am.gz
+# /usr/share/man/man3/inplace.3am.gz
+# /usr/share/man/man3/ordchr.3am.gz
+# /usr/share/man/man3/readdir.3am.gz
+# /usr/share/man/man3/readfile.3am.gz
+# /usr/share/man/man3/revoutput.3am.gz
+# /usr/share/man/man3/revtwoway.3am.gz
+# /usr/share/man/man3/rwarray.3am.gz
+# /usr/share/man/man3/time.3am.gz
 
 %changelog
 * Tue Jun 13 2017 David Kaspar [Dee'Kej] <dkaspar@redhat.com> - 4.0.2-4.el7_3.1
