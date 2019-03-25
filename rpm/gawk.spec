@@ -51,8 +51,6 @@ ln -sf gawk $RPM_BUILD_ROOT%{_bindir}/awk
 # remove %{version}* , when we are building a snapshot...
 rm -f $RPM_BUILD_ROOT/%{_bindir}/{,p}gawk-%{version}* $RPM_BUILD_ROOT%{_infodir}/dir
 
-#%find_lang %name
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -68,9 +66,9 @@ fi
 
 %files
 %{_bindir}/*awk
-%{_mandir}/man1/*
-%{_infodir}/gawk.info*
-%{_infodir}/gawkinet.info*
+#%{_mandir}/man1/*
+#%{_infodir}/gawk.info*
+#%{_infodir}/gawkinet.info*
 %{_libexecdir}/awk
 %{_datadir}/awk
 /etc/profile.d/gawk.csh
