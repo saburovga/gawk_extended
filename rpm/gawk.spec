@@ -68,8 +68,8 @@ fi
 
 %files -f %{name}.lang
 # %defattr(-,root,root,-)
-%doc README COPYING
-%doc README_d/README.multibyte README_d/README.tests POSIX.STD
+#%doc README COPYING
+#%doc README_d/README.multibyte README_d/README.tests POSIX.STD
 %{_bindir}/*awk
 %{_mandir}/man1/*
 %{_infodir}/gawk.info*
