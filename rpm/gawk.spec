@@ -66,10 +66,7 @@ if [ $1 = 0 -a -f %{_infodir}/gawk.info.gz ]; then
     /sbin/install-info --delete %{_infodir}/gawk.info.gz %{_infodir}/dir || :
 fi
 
-%files -f %{name}.lang
-# %defattr(-,root,root,-)
-#%doc README COPYING
-#%doc README_d/README.multibyte README_d/README.tests POSIX.STD
+%files
 %{_bindir}/*awk
 %{_mandir}/man1/*
 %{_infodir}/gawk.info*
