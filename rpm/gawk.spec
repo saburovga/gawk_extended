@@ -11,7 +11,7 @@ URL: http://www.gnu.org/software/gawk/gawk.html
 Source0: http://ftp.gnu.org/gnu/gawk/gawk-%{version}.tar.gz
 Requires(post): /sbin/install-info
 Requires(preun): /sbin/install-info
-Conflicts: filesystem < 3
+#Conflicts: filesystem < 3
 Provides: /bin/awk
 Provides: /bin/gawk
 BuildRequires: byacc
