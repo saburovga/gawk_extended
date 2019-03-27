@@ -12,7 +12,7 @@ script:
 - cp -r gawk/* .
 - rm -rf gawk
 - git add -A
-- git tag -a 1.0.0
+- git tag -a 1.0.0 -m "1.0.0"
 - git clone https://github.com/packpack/packpack.git packpack
 - packpack/packpack
 deploy:
