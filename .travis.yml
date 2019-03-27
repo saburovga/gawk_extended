@@ -13,7 +13,6 @@ script:
 - rm -rf gawk
 - git add -A
 - git clone https://github.com/packpack/packpack.git packpack
-- ls -a
 - packpack/packpack
 deploy:
   provider: bintray
