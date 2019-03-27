@@ -7,6 +7,10 @@ env:
   - OS=ubuntu DIST=xenial
   - OS=debian DIST=jessie
 
+stages:
+  - name: build package
+  - name: deploy package
+
 jobs:
   include:
     - stage: build package
@@ -19,7 +23,7 @@ jobs:
       - git add -A
       - git clone https://github.com/packpack/packpack.git packpack
       - packpack/packpack
-    - stage: deploy to bintray
+    - stage: deploy package
       deploy:
         provider: bintray
         user: tgadiev
