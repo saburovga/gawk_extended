@@ -8,12 +8,11 @@ env:
   - OS=debian DIST=jessie
 script:
 - git submodule update --init --recursive
+- git describe --long --always
 - git clone -b gawk-4.2.1 https://git.savannah.gnu.org/git/gawk.git
 - cp -r gawk/* .
 - rm -rf gawk
 - git add -A
-- git tag -d 4.2.1
-- git tag -a 4.2.1 -m "4.2.1"
 - git clone https://github.com/packpack/packpack.git packpack
 - packpack/packpack
 deploy:
