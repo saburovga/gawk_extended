@@ -16,7 +16,7 @@ script:
 - packpack/packpack
 deploy:
   provider: bintray
-  user: tgadiev
+  user: saburovga
   file: bintray.json
   skip_cleanup: true
   key:
