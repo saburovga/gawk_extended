@@ -2,7 +2,7 @@
   "package": {
       "name": "gawk",
       "repo": "gawk_extended",
-      "subject": "lean-delivery",
+      "subject": "saburovga",
       "desc": "rpm package gawk",
       "website_url": "https://github.com/lean-delivery/gawk_extended",
       "issue_tracker_url": "https://github.com/lean-delivery/gawk_extended/issues",
