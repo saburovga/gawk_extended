@@ -5,7 +5,7 @@ language: C
 env:
   matrix:
   - OS=el DIST=6
-  - OS=el DIST=7
+  #- OS=el DIST=7
 script:
 - git submodule update --init --recursive
 - git clone -b gawk-4.2.1 https://git.savannah.gnu.org/git/gawk.git
@@ -19,7 +19,7 @@ deploy:
   user: saburovga
   file: bintray.json
   skip_cleanup: true
-  key:
-    secure: c4YORVxFU/Et55LWvmiTyBYAldT7RYQUdZzm/G0QZW8UeG1D+iu48px04UUxVuNwoZPfqdQY1Zns7bowmA2vHHuEFhHQJRKfS1gG5hA4eqk1ypCkLlrrgKGqDdBG2WgIIPBa5R3KmJb84QXm6py0TxMcDHcQJI41ruK5dNaC2ZLnZJgKuj1g+ceip5hqGg5cALZn0um2HMAKjS6z+LfMhwMKutpASrbnXTBR3RJP9IuI7AoQwu6UGcXnLZQRj6BGEUNPkD0EFG32DzOSJFLQPBtAZvOaFCvDEHoWxqdqmlW+IGJm8tmu9chUT3ecP/L1679Dzb8ur4dnx4D2aTcDZm/qoWQo4oVGHUNI1WMBdz4bdgOCCPk+iDc//+dhgzbMAEyxZ28Ziwlcak+uKbfW07ZbnQkM58N3t9xTVUQKCubbDot7ceI6decwsJ+YmQebTpyTFqFId8LzZUiduu/ySJDX43bwCcKvEgAVBpc32k1DzMRKsvurii0ikLyHxnw7/4RgRFctCtL+iTADNv5jscL4neCGm6xB8ONbrXfEovqdJbXobCZJUw5pg81nSQCQxoMGCECuQyaClI0HU+IuiXPDaFvDnQWDBtr9uPa2CBdaCjSKotsT9HG8Mhy7AfXEtMAESwVK2VI9AdXDD5/1UrJ2Yf2W7OT+TXVnF8+h0uA=
+  key: 31b1dc1adf60515c1f3620108ee02b18dbbf5a6d
+    #secure: c4YORVxFU/Et55LWvmiTyBYAldT7RYQUdZzm/G0QZW8UeG1D+iu48px04UUxVuNwoZPfqdQY1Zns7bowmA2vHHuEFhHQJRKfS1gG5hA4eqk1ypCkLlrrgKGqDdBG2WgIIPBa5R3KmJb84QXm6py0TxMcDHcQJI41ruK5dNaC2ZLnZJgKuj1g+ceip5hqGg5cALZn0um2HMAKjS6z+LfMhwMKutpASrbnXTBR3RJP9IuI7AoQwu6UGcXnLZQRj6BGEUNPkD0EFG32DzOSJFLQPBtAZvOaFCvDEHoWxqdqmlW+IGJm8tmu9chUT3ecP/L1679Dzb8ur4dnx4D2aTcDZm/qoWQo4oVGHUNI1WMBdz4bdgOCCPk+iDc//+dhgzbMAEyxZ28Ziwlcak+uKbfW07ZbnQkM58N3t9xTVUQKCubbDot7ceI6decwsJ+YmQebTpyTFqFId8LzZUiduu/ySJDX43bwCcKvEgAVBpc32k1DzMRKsvurii0ikLyHxnw7/4RgRFctCtL+iTADNv5jscL4neCGm6xB8ONbrXfEovqdJbXobCZJUw5pg81nSQCQxoMGCECuQyaClI0HU+IuiXPDaFvDnQWDBtr9uPa2CBdaCjSKotsT9HG8Mhy7AfXEtMAESwVK2VI9AdXDD5/1UrJ2Yf2W7OT+TXVnF8+h0uA=
   on:
     all_branches: true
