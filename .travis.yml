@@ -5,7 +5,7 @@ language: C
 env:
   matrix:
   - OS=el DIST=6
-  #- OS=el DIST=7
+  - OS=el DIST=7
 script:
 - git submodule update --init --recursive
 - git clone -b gawk-4.2.1 https://git.savannah.gnu.org/git/gawk.git
